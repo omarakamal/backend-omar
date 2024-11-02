@@ -17,6 +17,8 @@ require("./config")(app);
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 const { isAutheticated } = require("./middleware/jwt.middleware.js");
+app.use('/auth',require('./routes/auth.routes.js'))
+
 app.use("/api", indexRoutes);
 
 app.use('/api',isAutheticated,require('./routes/author.routes.js'))
@@ -25,7 +27,6 @@ app.use('/',isAutheticated,require('./routes/books.routes.js'))
 
 app.use('/',isAutheticated,require('./routes/genres.routes.js'))
 
-app.use('/auth',require('./routes/auth.routes.js'))
 
 
 
